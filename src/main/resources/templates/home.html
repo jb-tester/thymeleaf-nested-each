@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>List all data</title>
+</head>
+<body>
+
+<h1>List all data:</h1>
+
+<div th:each="data : ${dataList}" th:object="${data}">
+    <p th:text="*{id}"></p>
+
+    <div th:each="element : *{elements}" th:object="${element}">
+    <!--<div th:each="element : ${data.elements}" th:object="${element}">-->
+        <p th:text="*{name}"></p>
+        <div th:each="prop : *{properties}" th:object="${prop}">
+        <!--<div th:each="prop : ${element.properties}" th:object="${prop}">-->
+            <p th:text="${prop.pname}"></p>
+            <p th:text="*{pvalue}"></p>
+         </div>
+        <p>---</p>
+    </div>
+
+    <p>------</p>
+</div>
+
+</body>
+</html>
